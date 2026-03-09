@@ -2,8 +2,8 @@ import type { Sanctuary, MapFilters } from '../types/sanctuary'
 
 export function filterSanctuaries(sanctuaries: Sanctuary[], filters: MapFilters): Sanctuary[] {
   return sanctuaries.filter((s) => {
-    if (filters.allowsVisits === true && !s.allowsVisits) return false
-    if (filters.cafe === true && !s.cafe) return false
+    // if (filters.allowsVisits === true && !s.allowsVisits) return false
+    // if (filters.cafe === true && !s.cafe) return false
     if (filters.holidayAccommodation === true && !s.holidayAccommodation) return false
     if (filters.canVolunteer === true && !s.canVolunteer) return false
 
