@@ -1,7 +1,7 @@
 import type { Sanctuary } from '../types/sanctuary'
 
 const TRUTHY = new Set(['yes', 'true', '1', 'y', 'on'])
-const FALSY = new Set(['no', 'false', '0', 'n', 'off', ''])
+const FALSY = new Set(['no', 'false', '0', 'n', 'off', '', 'unsure'])
 
 function parseBoolean(value: unknown): boolean {
   if (value === true || value === 1) return true
@@ -9,7 +9,22 @@ function parseBoolean(value: unknown): boolean {
   const s = String(value ?? '').trim().toLowerCase()
   if (TRUTHY.has(s)) return true
   if (FALSY.has(s)) return false
+  // Handle values like "Yes - regular opening hours", "Yes - allows dogs", "Yes - no pets"
+  if (s.startsWith('yes')) return true
   return false
+}
+
+/**
+ * Parse fields where any non-empty, non-"no", non-"unsure" value means true.
+ * Used for "Allows visits?" which has values like "Open days and or bookable tours only",
+ * "By private arrangement", "Regular opening hours".
+ */
+function parsePermissive(value: unknown): boolean {
+  if (value === true || value === 1) return true
+  if (value === false || value === 0) return false
+  const s = String(value ?? '').trim().toLowerCase()
+  if (!s || FALSY.has(s)) return false
+  return true
 }
 
 function parseNumber(value: unknown): number | null {
@@ -141,9 +156,9 @@ export function parseSanctuaryRow(row: RawRow, headers: string[]): ParsedSanctua
     latitude: lat ?? null,
     longitude: lng ?? null,
     animalTypes,
-    allowsVisits: parseBoolean(get(row, headers, 'allowsVisits')),
-    cafe: parseBoolean(get(row, headers, 'cafe')),
-    holidayAccommodation: parseBoolean(get(row, headers, 'holidayAccommodation')),
+    allowsVisits: parsePermissive(get(row, headers, 'allowsVisits')),
+    cafe: parsePermissive(get(row, headers, 'cafe')),
+    holidayAccommodation: parsePermissive(get(row, headers, 'holidayAccommodation')),
     canVolunteer: parseBoolean(get(row, headers, 'canVolunteer')),
     website: parseString(get(row, headers, 'website')) || undefined,
     facebook: parseString(get(row, headers, 'facebook')) || undefined,
