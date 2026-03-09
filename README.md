@@ -46,6 +46,24 @@ npm run build
 npm run preview
 ```
 
+### 5. Deploy (Cloudflare Pages)
+
+Install dependencies, then build and deploy the `dist` folder:
+
+```bash
+npm install
+npm run deploy
+```
+
+On first run, Wrangler will prompt you to create a Pages project or log in. To deploy without prompts (e.g. in CI), set `CLOUDFLARE_ACCOUNT_ID` and use:
+
+```bash
+npm run build
+npx wrangler pages deploy dist --project-name=vegan-animal-sanctuaries
+```
+
+The app is a static SPA; no `@cloudflare/vite-plugin` is required. If your environment adds it and you see a Vite peer dependency error, the project’s `.npmrc` uses `legacy-peer-deps=true` so `npm install` still succeeds.
+
 ## Google Sheet setup
 
 ### Required columns
