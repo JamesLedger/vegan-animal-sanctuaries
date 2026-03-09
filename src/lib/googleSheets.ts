@@ -52,10 +52,28 @@ export async function fetchSanctuariesFromSheet(): Promise<Sanctuary[]> {
   const headers = (parsed.meta.fields ?? []).map((h) => (typeof h === 'string' ? h.trim() : String(h)))
   const rows = parsed.data as RawRow[]
 
+  // DEBUG: log raw CSV headers so we can verify column names
+  console.log('[DEBUG] CSV headers:', JSON.stringify(headers))
+
   const sanctuaries: Sanctuary[] = []
   for (const row of rows) {
     const parsedRow = parseSanctuaryRow(row, headers)
     if (!parsedRow) continue
+
+    // DEBUG: log parsed filter fields for first 3 sanctuaries
+    if (sanctuaries.length < 3) {
+      const cafeHeader = headers.find(h => ['café','cafe'].includes(h.replace(/\uFEFF/g,'').trim().toLowerCase()))
+      const visitsHeader = headers.find(h => h.replace(/\uFEFF/g,'').trim().toLowerCase() === 'allows visits?')
+      const holidayHeader = headers.find(h => h.replace(/\uFEFF/g,'').trim().toLowerCase() === 'holiday accommodation')
+      console.log(`[DEBUG] ${parsedRow.name}:`, {
+        cafeRaw: cafeHeader ? row[cafeHeader] : '(header not found)',
+        visitsRaw: visitsHeader ? row[visitsHeader] : '(header not found)',
+        holidayRaw: holidayHeader ? row[holidayHeader] : '(header not found)',
+        cafe: parsedRow.cafe,
+        allowsVisits: parsedRow.allowsVisits,
+        holidayAccommodation: parsedRow.holidayAccommodation,
+      })
+    }
 
     const lat = parsedRow.latitude
     const lng = parsedRow.longitude
