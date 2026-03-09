@@ -31,8 +31,8 @@ export function FilterBar({
   }
 
   const hasActiveFilters =
-    filters.allowsVisits === true ||
-    filters.cafe === true ||
+    // filters.allowsVisits === true ||
+    // filters.cafe === true ||
     filters.holidayAccommodation === true ||
     filters.canVolunteer === true ||
     filters.animalTypes.length > 0
@@ -40,22 +40,22 @@ export function FilterBar({
   return (
     <div className={styles.bar}>
       <div className={styles.checkboxes}>
-        <label className={styles.label}>
+        {/* <label className={styles.label}>
           <input
             type="checkbox"
             checked={filters.allowsVisits === true}
             onChange={(e) => setBool('allowsVisits', e.target.checked ? true : null)}
           />
           <span>Allows visits</span>
-        </label>
-        <label className={styles.label}>
+        </label> */}
+        {/* <label className={styles.label}>
           <input
             type="checkbox"
             checked={filters.cafe === true}
             onChange={(e) => setBool('cafe', e.target.checked ? true : null)}
           />
           <span>Has cafe</span>
-        </label>
+        </label> */}
         <label className={styles.label}>
           <input
             type="checkbox"
