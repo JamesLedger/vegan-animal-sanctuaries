@@ -55,12 +55,7 @@ npm install
 npm run deploy
 ```
 
-On first run, Wrangler will prompt you to create a Pages project or log in. To deploy without prompts (e.g. in CI), set `CLOUDFLARE_ACCOUNT_ID` and use:
-
-```bash
-npm run build
-npx wrangler pages deploy dist --project-name=vegan-animal-sanctuaries
-```
+On first run, Wrangler will prompt you to log in. The `dist` folder is uploaded as static assets (see `[assets]` in `wrangler.toml`). For CI, set `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` as needed.
 
 The app is a static SPA; no `@cloudflare/vite-plugin` is required. If your environment adds it and you see a Vite peer dependency error, the project’s `.npmrc` uses `legacy-peer-deps=true` so `npm install` still succeeds.
 

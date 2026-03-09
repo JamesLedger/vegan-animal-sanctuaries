@@ -1,6 +1,6 @@
 name = "vegan-animal-sanctuaries"
 compatibility_date = "2024-01-01"
 
-# Static site: build with "npm run build", then deploy with "wrangler pages deploy dist"
-# No @cloudflare/vite-plugin needed for a static Vite SPA.
-pages_build_output_dir = "dist"
+# Static site: build with "npm run build", then deploy with "wrangler deploy"
+[assets]
+directory = "./dist"
