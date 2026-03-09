@@ -4,8 +4,9 @@ import { parseSanctuaryRow, toSanctuary } from './sanctuaryParser'
 import type { Sanctuary } from '../types/sanctuary'
 
 function getSheetUrl(): string {
-  const url = import.meta.env.VITE_GOOGLE_SHEET_URL
-  return (url && typeof url === 'string' ? url.trim() : '') || ''
+  const envUrl = import.meta.env.VITE_GOOGLE_SHEET_URL
+  if (envUrl && typeof envUrl === 'string' && envUrl.trim()) return envUrl.trim()
+  return 'https://docs.google.com/spreadsheets/d/1nZ5hinEnrRhigA10KuBkesgfzIkW47q7QR3eyBurk4g/edit?usp=drivesdk'
 }
 
 function toCsvUrl(sheetUrl: string): string {
