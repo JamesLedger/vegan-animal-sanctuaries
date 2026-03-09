@@ -1,0 +1,84 @@
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.animalTypes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.animalLabel {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.select {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  min-width: 140px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.4rem;
+  background: #e9ecef;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.chipRemove {
+  padding: 0 0.15rem;
+  background: none;
+  border: none;
+  color: #6c757d;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.chipRemove:hover {
+  color: #1a1a1a;
+}
+
+.clear {
+  margin-left: auto;
+  padding: 0.35rem 0.75rem;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.clear:hover {
+  background: #e9ecef;
+}

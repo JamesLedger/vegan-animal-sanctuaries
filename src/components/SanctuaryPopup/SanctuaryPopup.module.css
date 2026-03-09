@@ -1,0 +1,43 @@
+.popup {
+  min-width: 200px;
+  max-width: 320px;
+  padding: 0.25rem 0;
+}
+
+.name {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.section {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.section strong {
+  margin-right: 0.25rem;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  background: #e7f1ff;
+  color: #0d6efd;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.links {
+  font-size: 0.9rem;
+}
+
+.links a {
+  margin-right: 0.25rem;
+}

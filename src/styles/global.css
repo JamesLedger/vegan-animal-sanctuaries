@@ -1,0 +1,41 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.5;
+  color: #1a1a1a;
+  background: #f8f9fa;
+}
+
+a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a[target="_blank"]::after {
+  content: " ↗";
+  font-size: 0.85em;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
