@@ -34,6 +34,8 @@ export function SanctuaryPopup({ sanctuary }: SanctuaryPopupProps) {
       )}
 
       <div className={styles.features}>
+        {s.diet === 'vegan' && <Badge label="Vegan" />}
+        {s.diet === 'vegetarian' && <Badge label="Vegetarian" />}
         {s.allowsVisits && <Badge label="Allows visits" />}
         {s.cafe && <Badge label="Cafe" />}
         {s.holidayAccommodation && <Badge label="Holiday accommodation" />}

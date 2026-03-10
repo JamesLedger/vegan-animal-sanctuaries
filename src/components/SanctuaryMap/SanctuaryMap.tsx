@@ -29,6 +29,35 @@ const holidayIcon = L.icon({
   className: styles.holidayMarker,
 })
 
+const veganIcon = L.icon({
+  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+  className: styles.veganMarker,
+})
+
+const vegetarianIcon = L.icon({
+  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+  className: styles.vegetarianMarker,
+})
+
+function getMarkerIcon(sanctuary: Sanctuary): L.DivIcon | L.Icon {
+  if (sanctuary.diet === 'vegan') return veganIcon
+  if (sanctuary.diet === 'vegetarian') return vegetarianIcon
+  if (sanctuary.holidayAccommodation) return holidayIcon
+  return defaultIcon
+}
+
 function FitBounds({ sanctuaries }: { sanctuaries: Sanctuary[] }) {
   const map = useMap()
   useEffect(() => {
@@ -69,7 +98,7 @@ export function SanctuaryMap({ sanctuaries }: SanctuaryMapProps) {
           <Marker
             key={s.id}
             position={[s.latitude, s.longitude]}
-            icon={s.holidayAccommodation ? holidayIcon : defaultIcon}
+            icon={getMarkerIcon(s)}
           >
             <Popup>
               <SanctuaryPopup sanctuary={s} />

@@ -15,6 +15,8 @@ export interface Sanctuary {
   notes?: string
   image?: string
   published: boolean
+  /** Diet/food policy: vegan (green pin) or vegetarian (blue pin). */
+  diet?: 'vegan' | 'vegetarian'
 }
 
 export interface MapFilters {
@@ -22,5 +24,6 @@ export interface MapFilters {
   cafe: boolean | null
   holidayAccommodation: boolean | null
   canVolunteer: boolean | null
+  vegan: boolean | null
   animalTypes: string[]
 }

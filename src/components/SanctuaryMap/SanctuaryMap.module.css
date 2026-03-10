@@ -13,3 +13,11 @@
 .holidayMarker {
   filter: hue-rotate(260deg);
 }
+
+.veganMarker {
+  filter: hue-rotate(-120deg);
+}
+
+.vegetarianMarker {
+  /* Default Leaflet marker is already blue */
+}

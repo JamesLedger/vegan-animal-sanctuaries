@@ -6,6 +6,7 @@ export function filterSanctuaries(sanctuaries: Sanctuary[], filters: MapFilters)
     // if (filters.cafe === true && !s.cafe) return false
     if (filters.holidayAccommodation === true && !s.holidayAccommodation) return false
     if (filters.canVolunteer === true && !s.canVolunteer) return false
+    if (filters.vegan === true && s.diet !== 'vegan') return false
 
     if (filters.animalTypes.length > 0) {
       const sanctuaryTypes = s.animalTypes.map((t) => t.trim().toLowerCase())
@@ -35,5 +36,6 @@ export const DEFAULT_FILTERS: MapFilters = {
   cafe: null,
   holidayAccommodation: null,
   canVolunteer: null,
+  vegan: null,
   animalTypes: [],
 }

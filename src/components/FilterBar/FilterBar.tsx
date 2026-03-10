@@ -35,6 +35,7 @@ export function FilterBar({
     // filters.cafe === true ||
     filters.holidayAccommodation === true ||
     filters.canVolunteer === true ||
+    filters.vegan === true ||
     filters.animalTypes.length > 0
 
   return (
@@ -73,6 +74,14 @@ export function FilterBar({
             onChange={(e) => setBool('canVolunteer', e.target.checked ? true : null)}
           />
           <span>Can volunteer</span>
+        </label>
+        <label className={styles.label}>
+          <input
+            type="checkbox"
+            checked={filters.vegan === true}
+            onChange={(e) => setBool('vegan', e.target.checked ? true : null)}
+          />
+          <span>Vegan</span>
         </label>
       </div>
 

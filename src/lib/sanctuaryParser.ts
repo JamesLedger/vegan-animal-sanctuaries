@@ -45,6 +45,16 @@ function parseStringArray(value: unknown): string[] {
   return s.split(',').map((x) => x.trim()).filter(Boolean)
 }
 
+function parseDiet(value: unknown): Diet | undefined {
+  const s = parseString(value).toLowerCase()
+  if (!s) return undefined
+  if (s === 'vegan') return 'vegan'
+  if (s === 'vegetarian') return 'vegetarian'
+  // "Vegan" column is often Y/N: Yes, Y, true → vegan
+  if (TRUTHY.has(s) || s.startsWith('yes')) return 'vegan'
+  return undefined
+}
+
 /**
  * Parse "Location" column: "lat, lng" or "lat lng" (e.g. "52.123, -1.456").
  * Returns [lat, lng] or null if invalid.
@@ -64,6 +74,8 @@ function parseLocation(value: unknown): [number, number] | null {
 export interface RawRow {
   [key: string]: string | undefined
 }
+
+export type Diet = 'vegan' | 'vegetarian'
 
 export interface ParsedSanctuaryRow extends Omit<Sanctuary, 'latitude' | 'longitude'> {
   latitude: number | null
@@ -89,6 +101,7 @@ const HEADER_ALIASES: Record<string, string[]> = {
   notes: ['notes'],
   image: ['image'],
   published: ['published'],
+  diet: ['diet', 'vegan', 'vegan/vegetarian', 'food policy', 'foodpolicy'],
 }
 
 const ANIMAL_COLUMNS = [
@@ -165,6 +178,7 @@ export function parseSanctuaryRow(row: RawRow, headers: string[]): ParsedSanctua
     notes: parseString(get(row, headers, 'notes')) || undefined,
     image: parseString(get(row, headers, 'image')) || undefined,
     published: true,
+    diet: parseDiet(get(row, headers, 'diet')),
   }
 }
 
