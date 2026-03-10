@@ -4,32 +4,43 @@
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  padding: 3rem 1.5rem;
-  min-height: 200px;
+  padding: 4rem 1.5rem;
+  min-height: 280px;
   text-align: center;
 }
 
 .title {
   margin: 0;
   font-size: 1.25rem;
-  color: #1a1a1a;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
 }
 
 .message {
   margin: 0;
-  color: #6c757d;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
   max-width: 400px;
+  line-height: 1.5;
 }
 
 .retry {
   margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: #0d6efd;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  background: var(--color-accent);
   color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), transform 0.15s var(--ease);
 }
 
 .retry:hover {
-  background: #0b5ed7;
+  background: var(--color-accent-hover);
+}
+
+.retry:active {
+  transform: scale(0.98);
 }

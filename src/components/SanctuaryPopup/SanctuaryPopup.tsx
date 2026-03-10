@@ -5,8 +5,9 @@ interface SanctuaryPopupProps {
   sanctuary: Sanctuary
 }
 
-function Badge({ label }: { label: string }) {
-  return <span className={styles.badge}>{label}</span>
+function Badge({ label, variant }: { label: string; variant?: 'vegan' | 'vegetarian' }) {
+  const className = variant === 'vegan' ? `${styles.badge} ${styles.badgeVegan}` : styles.badge
+  return <span className={className}>{label}</span>
 }
 
 function link(href: string | undefined, label: string): React.ReactNode {
@@ -34,7 +35,7 @@ export function SanctuaryPopup({ sanctuary }: SanctuaryPopupProps) {
       )}
 
       <div className={styles.features}>
-        {s.diet === 'vegan' && <Badge label="Vegan" />}
+        {s.diet === 'vegan' && <Badge label="Vegan" variant="vegan" />}
         {s.diet === 'vegetarian' && <Badge label="Vegetarian" />}
         {s.allowsVisits && <Badge label="Allows visits" />}
         {s.cafe && <Badge label="Cafe" />}

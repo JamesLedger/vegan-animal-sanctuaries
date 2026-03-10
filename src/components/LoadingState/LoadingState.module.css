@@ -3,18 +3,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  padding: 3rem 1.5rem;
-  min-height: 200px;
+  gap: 1.25rem;
+  padding: 4rem 1.5rem;
+  min-height: 280px;
 }
 
 .spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid #dee2e6;
-  border-top-color: #0d6efd;
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-accent);
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+  animation: spin 0.7s var(--ease) infinite;
 }
 
 @keyframes spin {
@@ -25,5 +25,6 @@
 
 .message {
   margin: 0;
-  color: #6c757d;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
 }

@@ -61,6 +61,13 @@ export function MapPage() {
         onClear={clearFilters}
       />
       <div className={styles.mapContainer}>
+        <div className={styles.mapCount} role="status" aria-live="polite">
+          {sanctuaries.length === 0
+            ? 'No sanctuaries'
+            : filtered.length === sanctuaries.length
+              ? `${filtered.length} ${filtered.length === 1 ? 'sanctuary' : 'sanctuaries'}`
+              : `${filtered.length} of ${sanctuaries.length} sanctuaries`}
+        </div>
         <SanctuaryMap sanctuaries={filtered} />
         {filtered.length === 0 && (
           <div className={styles.empty} role="status">

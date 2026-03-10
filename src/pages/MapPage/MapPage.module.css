@@ -1,7 +1,7 @@
 .page {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 57px);
   min-height: 400px;
 }
 
@@ -11,23 +11,42 @@
   min-height: 0;
 }
 
+.mapCount {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  pointer-events: none;
+}
+
 .empty {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem 2.5rem;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-width: 320px;
 }
 
 .empty p {
   margin: 0 0 0.5rem;
-  color: #6c757d;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
 }
 
 .empty p:last-child {
   margin-bottom: 0;
+  font-size: 0.9375rem;
+  color: var(--color-text-tertiary);
 }
